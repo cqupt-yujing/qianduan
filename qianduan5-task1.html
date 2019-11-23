@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>qianduan5-task1 </title>
+</head>
+<body>
+    <script type = text/javascript>
+    //父类型
+    function Wife(mother){
+        this.mother = mother;
+    }
+    function Father(bloodType){
+        this.bloodType=bloodType
+    }
+    Father.protoType = new Wife()
+    //子类型
+    function Son(bloodType,age,name,phone,mother){
+        Father.call(this,bloodType);
+        Wife.call(this,mother)
+       this.age = age;
+       this.name = name;
+       this.phone = phone; 
+    }
+    var son1 = new Son('A',5,'mike',15110518746,'miss');
+     console.log(son1);
+    //子类型的原型为父类型的一个实例
+    Son.protoType = new Father();
+    //让子类型的原型的constructor指向子类型
+    Son.protoType.constructor = Son;
+
+    function Daughter(bloodType,age,name,phone,mother){
+        Father.call(this,bloodType);
+        Wife.call(this,mother)
+       this.age = age;
+       this.name = name;
+       this.phone = phone; 
+    }
+    var daughter1 = new Daughter('A',15,'mier',15110518746,'miss');
+     console.log(daughter1);
+
+
+        
+    </script>
+</body>
+</html>
